@@ -5,21 +5,23 @@ Stripe秘密鍵は削除済み（プレースホルダに置き換え済み）
 Laravel製のフリマアプリです。
 ユーザー登録・ログイン・商品出品・購入・お気に入り・コメント投稿など、基本的な機能を備えています。
 Stripe決済（テストモード）にも対応しています。
+※ Stripe秘密鍵は削除済み（プレースホルダに置き換え済み）
 
 ---
-# 環境構築
 
-1.クローン & 起動
+## 🔧 環境構築
+
+### 1. クローン & 起動
 ```bash
-git clone https://github.com/yourname/prima.git
-cd prima/src
+git clone git@github.com:masahiro1234-us/purima.git
+cd purima
 docker compose up -d --build
-
+```
 
 2.コンテナに入る
 ```bash
 docker compose exec php bash
-
+```
 
 3.Laravel初期設定
 ```bash
