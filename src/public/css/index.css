@@ -1,0 +1,57 @@
+/* ===== 商品一覧（トップ） ===== */
+
+/* グリッド全体 */
+.products {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-top: 16px;
+}
+
+/* 4カラム、カード幅290px、行間はFigmaの見た目に近づけ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* カード */
+.item-card {
+    background:#fff;
+    border-radius:8px;
+}
+
+/* サムネ：290x290 正方形 */
+.item-card__thumb {
+    border-radius:6px;
+    overflow:hidden;
+}
+
+/* 画像を枠いっぱいにトリミング */
+.item-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 商品名（カード合計高さを約320に） */
+.item-card__name {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ページネーション */
+.pagination {
+    margin-top: 32px;
+}
+
+/* 商品一覧のカード内リンクはすべて下線なし＆黒 */
+.products-grid a,
+.products-grid a:visited {
+  text-decoration: none;
+  color: #000;
+}

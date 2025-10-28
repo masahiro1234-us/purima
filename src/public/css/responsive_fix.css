@@ -1,0 +1,175 @@
+/* =========================================
+   Responsive fixes — PC 1400〜1540px 安定化
+   Place this at the end of your CSS so it overrides earlier rules.
+   ========================================= */
+
+/* 基本の画像リセット（全体） */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+/* リンク内の画像（カード等）を確実にオブジェクトフィットさせる */
+.item-card__img,
+.item-card__thumb img,
+.mypage__product-thumb img,
+.purchase__thumb img,
+.pf-avatar,
+.pd__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* ページの最大幅（十分広いモニタ時の横伸びを抑える） */
+.container-max {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* デフォルトの最大幅（汎用） */
+:root {
+  --site-max-width: 1200px; /* 中央レイアウトの基準 */
+}
+
+/* items index グリッドの安定化 */
+.products-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* 商品カードのサムネイルを正方形に保つ */
+.card__thumb,
+.item-card__thumb,
+.mypage__product-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+/* 商品詳細ページ（.pd）グリッドの安定化 */
+.pd.page-item-show .pd__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 570px 1fr; /* 左固定 570px、右は残り */
+  align-items: start;
+  justify-content: center;
+}
+
+/* 570pxの画像を中央に寄せる（余白処理） */
+.pd.page-item-show {
+  max-width: calc(var(--site-max-width) + 40px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 32px 16px 80px;
+}
+
+/* マイページの出品一覧カード */
+.mypage__products {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+/* プロフィール/アバター固定サイズ（丸） */
+.mypage__avatar img,
+.pf-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 9999px;
+  object-fit: cover;
+  display: block;
+}
+
+/* purchase サムネイルサイズ安定化 */
+.purchase__thumb {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* small helper: テキスト溢れ防止 */
+.truncate-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================
+   メディアクエリ：PC幅 1400px 〜 1540px のとき
+   必要最小限の変更で崩れを防ぐ
+   ========================================= */
+@media (min-width: 1400px) and (max-width: 1540px) {
+
+  /* サイト全体の最大幅を固定して中央に寄せる */
+  .container-max {
+    max-width: 1280px; /* この値で1400-1540でちょうどレイアウトが安定する */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 商品詳細：左右2カラムを確実にキープ */
+  .pd.page-item-show .pd__grid {
+    grid-template-columns: 570px 1fr; /* 左カラムは常に570px */
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* pd__image の画像大きさを厳密に制御（570px） */
+  .pd__image img {
+    width: 570px;
+    height: 570px;
+    max-width: 570px;
+    max-height: 570px;
+    object-fit: cover;
+  }
+
+  /* マイページや index のカード列が伸びすぎないように */
+  .products-grid,
+  .mypage__products {
+    gap: 22px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  /* 販売ボタンや情報エリア内の折り返しを防ぐ */
+  .pd__main {
+    min-width: 0; /* 子の flex / grid でオーバーフローしないように */
+    word-wrap: break-word;
+  }
+
+  /* 余白微調整 */
+  .pd.page-item-show { padding-left: 20px; padding-right: 20px; }
+}
+
+/* =========================================
+   保険：超大画面・小画面でも崩れないための補助ルール
+   ========================================= */
+@media (min-width: 1550px) {
+  :root { --site-max-width: 1320px; }
+  .container-max { max-width: 1320px; }
+}
+
+@media (max-width: 1024px) {
+  /* モバイルやタブレットでは pd グリッドを縦並びにする */
+  .pd.page-item-show .pd__grid {
+    grid-template-columns: 1fr;
+  }
+  .pd__image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  .purchase__thumb { width: 100px; height: 100px; }
+  .mypage__avatar img, .pf-avatar { width: 96px; height: 96px; }
+}

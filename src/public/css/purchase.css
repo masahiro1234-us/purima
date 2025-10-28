@@ -1,0 +1,207 @@
+/* =========================
+   購入ページ（見本寄せ）
+   ========================= */
+
+:root{
+  --p-text:#222;
+  --p-muted:#666;
+  --p-line:#e4e4e4;
+  --p-strong:#111;
+  --p-accent:#ff6b6b;
+  --p-card:#fff;
+}
+
+.purchase{
+  max-width:1080px;
+  margin:40px auto 64px;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:1fr 360px; /* 左可変 / 右固定 */
+  gap:40px;
+  color:var(--p-text);
+  box-sizing:border-box;
+}
+
+/* -------------------------
+   左ペイン
+   ------------------------- */
+
+/* 枠ありカードの基礎（使わないけど残し） */
+.purchase__item{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  border:1px solid var(--p-line);
+  border-radius:10px;
+  padding:20px;
+  background:var(--p-card);
+}
+
+/* 今回使う：枠なし＋下線 */
+.purchase__item--plain{
+  border: 0;                         /* 全部消す */
+  border-bottom: 1px solid var(--p-line);  /* 下線だけ */
+  border-radius: 0;
+  padding-bottom: 18px;
+  margin-bottom: 18px;               /* 下の余白 */
+}
+
+/* 画像を 177.53px 四方に */
+.purchase__thumb{
+  width:177.53px;
+  height:177.53px;
+  flex:0 0 177.53px;
+  border:1px solid #eee;
+  background:#fafafa;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:8px;overflow:hidden;
+}
+.purchase__thumb img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.purchase__name{font-weight:800;font-size:18px;margin:0 0 6px;}
+.purchase__price{font-size:18px;}
+
+/* セクション区切り */
+.purchase__section{
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--p-line);
+}
+
+.purchase__label{font-weight:800;color:var(--p-strong);margin-bottom:4px;font-size:14px;}
+
+.purchase__label-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+.purchase__label-row .purchase__label{margin:0;}
+
+.purchase__method-form{max-width:360px;margin-top:6px;}
+.purchase__select{
+  width:100%;
+  height:40px;
+  border:1px solid #d5d5d5;
+  border-radius:8px;
+  padding:0 12px;
+  background:#fff;
+  font-size:14px;
+}
+
+/* 配送先 */
+.purchase__addr{line-height:1.9;color:var(--p-text);}
+.purchase__link{
+  color:#316cff;text-decoration:none;font-size:13px;
+}
+.purchase__link:hover{text-decoration:underline;}
+.form-error{color:#d33;margin-top:6px;font-size:13px;}
+
+/* -------------------------
+   右ペイン（見本寄せ）
+   ------------------------- */
+
+/* 情報ボックス：角丸なし・直線枠 */
+.summary{
+  background:var(--p-card);
+  border:1px solid var(--p-line);
+  border-radius:0;            /* ← 角丸削除 */
+  overflow:hidden;
+  position:sticky;top:18px;
+  box-shadow:none;            /* ← シャドウも不要 */
+}
+
+.summary__row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 18px;
+  border-bottom:1px solid #f0f0f0;
+  font-size:14px;
+}
+.summary__row:last-child{border-bottom:0;}
+.summary__row:first-child span:last-child{font-weight:800;}
+
+/* 購入ボタンは別枠 */
+.summary-cta{
+  margin-top:14px;
+  display:flex;
+}
+.summary__buy{
+  width:100%;
+  height:48px;
+  border:0;
+  border-radius:8px;
+  background:var(--p-accent);
+  color:#fff;
+  font-weight:800;
+  letter-spacing:.08em;
+  cursor:pointer;
+  transition:filter .15s ease, transform .02s ease;
+  box-shadow:0 2px 0 rgba(0,0,0,.04);
+}
+.summary__buy:hover{filter:brightness(.96);}
+.summary__buy:active{transform:translateY(1px);}
+
+/* -------------------------
+   住所編集画面（共用）
+   ------------------------- */
+.address-edit{
+  max-width:720px;
+  margin:40px auto 64px;
+  padding:0 24px;
+  box-sizing:border-box;
+}
+.address-edit__title{font-size:22px;font-weight:800;margin:0 0 18px;color:var(--p-strong);}
+.address-edit__form{display:grid;gap:16px;}
+.address-edit__field{display:grid;gap:6px;}
+.address-edit__field > span{font-weight:700;font-size:14px;}
+.address-edit__field input{
+  height:42px;border:1px solid #d5d5d5;border-radius:8px;padding:0 12px;font-size:14px;
+}
+.address-edit__submit{
+  margin-top:6px;height:46px;border:0;border-radius:8px;background:var(--p-accent);
+  color:#fff;font-weight:800;letter-spacing:.06em;cursor:pointer;
+}
+.address-edit__submit:hover{filter:brightness(.96);}
+
+/* ← 左ペインの最初のセクションは上線ナシ（二重線防止） */
+.purchase__pane--left .purchase__section:first-of-type{
+  border-top: 0;
+  padding-top: 0;
+  /* 余白が詰まるのが気になる場合だけ */
+  /* margin-top: 18px; */
+}
+
+/* -------------------------
+   レスポンシブ
+   ------------------------- */
+@media (max-width: 900px){
+  .purchase{grid-template-columns:1fr;gap:24px;margin:28px auto 48px;}
+  .summary{position:static;}
+}
+
+/* ラベルと内容の段差を明確にする */
+.purchase__label {
+  margin-bottom: 0;        /* ラベル直下の余白はゼロに */
+  line-height: 1;          /* ラベル自体の高さを詰める */
+}
+
+/* ラベルの下に内容を 12px 落とす（方法セレクト & 住所） */
+.purchase__method-form,
+.purchase__addr {
+  margin-top: 12px;        /* ← ここで“見本のズレ”を作るコア設定 */
+}
+
+/* セクションの上下バランスは少しだけタイトに */
+.purchase__section {
+  margin-top: 16px;        /* 前のブロックとの距離 */
+  padding-top: 14px;       /* 上の区切り線からラベルまでの距離 */
+}
+
+/* セレクトの見た目はそのまま。高さだけ念のため固定 */
+.purchase__select {
+  height: 40px;
+  line-height: 40px;
+}

@@ -1,0 +1,44 @@
+.verify__wrap {
+  width: 720px;          
+  margin: 0 auto;
+  text-align: center;
+}
+
+.verify__lead {
+  margin: 40px 0 40px;   /* 上40px / 下40px に余白を広げる */
+}
+.verify__line {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.6;      /* 少し広めに */
+}
+
+.verify__primary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 257px;
+  height: 56px;
+  border-radius: 6px;
+  background: #d9d9d9;
+  color: #000;
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: none;
+  margin: 40px 0 30px;   /* 上40px / 下30px の余白でボタンの位置を調整 */
+}
+
+.verify__resend {
+  margin-top: 30px;      /* 再送リンクをさらに下げる */
+}
+
+.verify__link {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #0073cc;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}

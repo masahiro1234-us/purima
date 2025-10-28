@@ -1,0 +1,89 @@
+/* =========================
+   送付先住所変更画面
+   ========================= */
+
+.address-edit {
+  max-width: 720px;
+  margin: 32px auto 80px;   /* 上下の余白を広めに */
+  padding: 0 24px;
+  box-sizing: border-box;
+  color: #222;
+}
+
+/* タイトル */
+.address-edit__title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 12px 0 28px;
+}
+
+/* フォーム */
+.address-edit__form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;   /* フィールド間隔 */
+}
+
+/* フィールド */
+.address-edit__field {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 6px;
+}
+.address-edit__field input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 14px;
+  border: 1px solid #d5d5d5;
+  border-radius: 6px;
+  background: #fff;
+  box-sizing: border-box;
+}
+.address-edit__field input:focus {
+  outline: none;
+  border-color: #b9c6ff;
+  box-shadow: 0 0 0 3px rgba(65,105,225,.12);
+}
+
+/* エラーメッセージ */
+.form-error {
+  margin-top: 4px;
+  color: #d33;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+/* 送信ボタン */
+.address-edit__submit {
+  margin-top: 20px;
+  min-width: 260px;
+  height: 46px;
+  border: 0;
+  border-radius: 6px;
+  background: #ff6b6b;  /* 購入ボタンと同じカラー */
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter .15s ease;
+}
+.address-edit__submit:hover {
+  filter: brightness(.95);
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 480px) {
+  .address-edit {
+    margin: 24px auto 60px;
+    padding: 0 16px;
+  }
+  .address-edit__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}

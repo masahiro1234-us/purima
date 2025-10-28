@@ -1,0 +1,121 @@
+:root {
+    --container-w: 1080px;  /* Figmaのコンテナ幅 */
+    --gap: 18px;            /* カード間隔 */
+    --radius: 8px;          /* 角丸 */
+    --text: #222;
+    --muted: #888;
+    --border: #eee;
+    --accent: #ff694a;      /* タブ/強調色 */
+    --h1: 28px;             /* 一覧タイトル */
+    --price: 20px;          /* 一覧の価格 */
+    --title: 14px;          /* 一覧の商品名 */
+}
+
+/* ページ共通 */
+.page {
+    max-width: var(--container-w);
+    margin: 40px auto 0;   /* ← ヘッダー下に余白 */
+    padding: 24px;
+}
+
+.page__title {
+    font-size: var(--h1);
+    font-weight: 700;
+    margin: 0 0 16px;
+}
+
+/* ボタン */
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+}
+.btn:hover { background: #f7f7f7; }
+.btn--secondary { border-color: #ccc; }
+
+.pagination { margin-top: 16px; }
+
+/* ヘッダの下タブ */
+.site-header__tabs { border-bottom: 2px solid #5f5f5f; }
+.site-header__tabs .tab {
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #333;
+}
+.site-header__tabs .is-active {
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+/* =========================
+   一覧のグリッド（index.cssが無い場合の保険）
+   ========================= */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1024px){
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 760px){
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* カード共通 */
+.item-card { color: inherit; text-decoration: none; display: block; }
+.item-card__title {
+  margin-top: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--title);
+  color: var(--text);
+}
+
+/* ===== 共通：斜め SOLD 透かし（どの画面でも使える） ===== */
+.wm-sold {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: clamp(42px, 6vw, 96px);
+  font-weight: 900;
+  letter-spacing: .12em;
+  color: rgba(255, 0, 0, 0.48);  /* 赤＋半透明 */
+  text-shadow: 2px 2px 5px rgba(0,0,0,.25);
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  z-index: 2;
+}
+
+/* SOLDの基準にするため relative を強制 */
+.card__thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+/* SOLD のとき、画像を少しトーンダウン */
+.card--sold .card__thumb img {
+  filter: grayscale(1) brightness(.9);
+}
+
+/* SOLDカードの軽い光の筋（透かし感アップ・任意） */
+.card--sold .card__thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(255,255,255,.04) 60%,
+    transparent 80%
+  );
+  pointer-events: none;
+}

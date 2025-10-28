@@ -1,0 +1,85 @@
+/* ===== Auth Header (Figma: W: full, H: 82px, black bar, white logo) ===== */
+.auth-header{
+  width: 100%;
+  height: 82px;
+  background: #000;
+  display: flex;
+  align-items: center;
+}
+.auth-header__inner{
+  width: min(95vw, 1200px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+.auth-header__logo{
+  height: 40px;      /* ロゴ高さは見た目合わせ */
+  width: auto;
+  display: block;
+  /* 黒ロゴしか無い場合は反転して白に見せる（白ロゴがあるなら削除してOK） */
+  filter: brightness(0) invert(1);
+}
+
+/* ===== 認証フォーム共通ラッパ（中央寄せ） ===== */
+.auth-page{
+  width: min(95vw, 1200px);
+  margin: 40px auto 80px;
+  padding: 0 16px;
+}
+
+/* 共通カード */
+.auth-card {
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 40px;
+  background: #fff;
+  border: none;
+  box-shadow: none;
+}
+
+/* 見出し */
+.auth-card__title{
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* 入力 */
+.auth-input{
+  width: 100%;
+  height: 58px;               /* Figma: 58px */
+  border: 1px solid #F5F5F5;  /* Figmaの枠色 */
+  border-radius: 4px;
+  padding: 0 14px;
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+/* 送信ボタン */
+.auth-submit{
+  width: 680px;               /* Figma: 680 */
+  max-width: 100%;
+  height: 65px;               /* Figma: 65 */
+  background: #FF5555;        /* Figmaの赤 */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  display: block;
+  margin: 24px auto 0;
+  cursor: pointer;
+}
+
+/* 下リンク（「ログインはこちら」「会員登録はこちら」等 257×53） */
+.auth-link{
+  display: block;
+  width: 257px;
+  height: 53px;
+  line-height: 53px;
+  text-align: center;
+  margin: 12px auto 0;
+  color: #0073CC;
+  text-decoration: none;
+}

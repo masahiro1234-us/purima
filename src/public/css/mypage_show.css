@@ -1,0 +1,108 @@
+:root{
+  --mp-maxw: 1200px;
+  --mp-gap : 24px;
+  --mp-gray: #E5E5E5;
+  --mp-dark: #222;
+  --mp-accent:#ff6b6b;
+}
+
+/* コンテナ */
+.mypage{
+  max-width: var(--mp-maxw);
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  color: #111;
+}
+
+/* ヘッダー */
+.mypage__header{ padding: 16px 0 8px; }
+.mypage__header-inner{
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 20px;
+}
+.mypage__avatar{
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  overflow: hidden;
+}
+.mypage__avatar img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.mypage__name{ font-size: 28px; font-weight: 700; }
+.mypage__edit-btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 36px; padding: 0 14px;
+  border: 1px solid #ff8f8f; color: #ff6b6b; background: #fff;
+  border-radius: 6px; text-decoration: none; font-weight: 600;
+}
+.mypage__edit-btn:hover{ background: #fff0f0; }
+
+/* タブ */
+.mypage__tabs{
+  display: flex; gap: 20px; align-items: center;
+  border-bottom: 1px solid var(--mp-gray);
+  margin: 20px 0 18px;
+  padding-bottom: 6px;
+}
+.mypage__tab{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 10px;
+  color: #666; text-decoration: none; font-weight: 700;
+}
+.mypage__tab.is-active{ color: #000; }
+.mypage__tab.is-active::after{
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -7px; height: 3px;
+  background: #000; border-radius: 2px;
+}
+
+/* グリッド */
+.mypage__products{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--mp-gap);
+}
+.mypage__product{
+  display: block; text-decoration: none; color: inherit;
+}
+.mypage__product-thumb{
+  width: 100%; aspect-ratio: 1 / 1; border: 1px solid #ddd; background: #f7f7f7;
+  overflow: hidden; border-radius: 4px;
+}
+.mypage__product-thumb img{
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.mypage__product-name{
+  margin-top: 8px; font-size: 14px; color: #444;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* 空メッセージ */
+.mypage__empty{
+  grid-column: 1 / -1; padding: 32px 0; color: #666;
+}
+
+/* ページャ（位置だけ整える） */
+.mypage__pager{ margin-top: 16px; }
+
+/* レスポンシブ */
+@media (max-width: 1024px){
+  .mypage__products{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px){
+  .mypage__header-inner{
+    grid-template-columns: 80px 1fr;
+    grid-auto-rows: auto;
+  }
+  .mypage__avatar{ width: 80px; height: 80px; }
+  .mypage__edit-btn{ grid-column: 1 / -1; width: max-content; }
+  .mypage__products{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px){
+  .mypage__products{ grid-template-columns: 1fr; }
+}

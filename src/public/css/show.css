@@ -1,0 +1,214 @@
+:root{
+  --pd-accent:#ff6b6b;
+  --pd-muted:#E5E5E5;
+  --pd-chip:#BBB;
+  --pd-border:#444;
+  --pd-gray:#DDD;
+
+  --pd-maxw:1200px;
+  --pd-mainw:570px;   /* 右レール幅 */
+  --pd-avatar:70px;
+  --pd-gap:12px;
+}
+
+/* ===== レイアウト ===== */
+.page-item-show.pd{
+  max-width:var(--pd-maxw);
+  margin:40px auto 80px;
+  padding:0 24px;
+  box-sizing:border-box;
+}
+.page-item-show .pd__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:start;
+}
+.page-item-show .pd__main{
+  width:var(--pd-mainw);
+  max-width:var(--pd-mainw);
+}
+
+/* ===== 画像 ===== */
+.page-item-show .pd__image{
+  position:relative;
+  width:100%;
+  max-width:var(--pd-mainw);
+}
+.page-item-show .pd__image img{
+  width:100%;
+  height:auto;
+  max-width:var(--pd-mainw);
+  max-height:var(--pd-mainw);
+  display:block;
+  object-fit:cover;
+  background:#eee;
+  border:1px solid var(--pd-gray);
+}
+
+/* 斜め SOLD（一覧と同じトーン/角度） */
+.page-item-show .pd__soldmark{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  user-select:none;
+  transform:rotate(-25deg);
+  font-weight:900;
+  letter-spacing:.14em;
+  color:rgba(255,0,0,.42);          /* 赤 × 透過（強すぎない） */
+  text-shadow:2px 4px 8px rgba(0,0,0,.18);
+  mix-blend-mode:multiply;
+  font-size:clamp(56px, 9vw, 140px);/* デカすぎない範囲に収める */
+}
+/* SOLD時は画像をほんの少し落とす */
+.page-item-show .pd__image.is-sold img{
+  filter:grayscale(.12) brightness(.96);
+}
+
+/* ===== タイトル / 価格 ===== */
+.page-item-show .pd__title{font-size:45px;font-weight:700;line-height:1.3;margin:0 0 8px;}
+.page-item-show .pd__brand{font-size:20px;margin:0 0 4px;}
+.page-item-show .pd__price{font-size:30px;margin:8px 0 12px;}
+.page-item-show .pd__tax{font-size:16px;}
+
+/* ===== アクション ===== */
+.page-item-show .pd__actions{display:flex;gap:32px;align-items:flex-start;margin:12px 0;}
+.page-item-show .pd__action{display:flex;flex-direction:column;align-items:center;min-width:40px;}
+.page-item-show .pd__icon-box{display:flex;align-items:center;justify-content:center;width:40px;height:40px;}
+.page-item-show .pd__icon-btn{all:unset;display:flex;align-items:center;justify-content:center;width:40px;height:40px;cursor:pointer;}
+.page-item-show .pd__icon{width:40px;height:40px;display:block;}
+.page-item-show .pd__icon.is-inactive{opacity:.35;filter:grayscale(100%);}
+.page-item-show .pd__count{margin-top:6px;height:21px;line-height:21px;text-align:center;font-size:18px;font-weight:700;}
+
+/* ===== 購入ボタン ===== */
+.page-item-show .pd__buybtn{
+  display:block;
+  width:var(--pd-mainw);
+  height:56px;
+  line-height:56px;
+  text-align:center;
+  font-weight:700;
+  color:#fff;
+  background:var(--pd-accent);
+  border:0;
+  border-radius:10px;
+  text-decoration:none;
+  margin:22px 0;
+  box-shadow:0 2px 0 rgba(0,0,0,.04);
+}
+.page-item-show .pd__buybtn:hover{filter:brightness(.96);}
+.page-item-show .pd__buybtn.is-sold{background:#bbb;pointer-events:none;}
+
+/* ===== セクション ===== */
+.page-item-show .pd__block{width:var(--pd-mainw);max-width:var(--pd-mainw);}
+.page-item-show .pd__section-title{font-size:36px;font-weight:700;margin:24px 0 12px;}
+.page-item-show .pd__desc{line-height:1.8;}
+
+/* ===== 商品の情報 ===== */
+.page-item-show .pd__info{width:var(--pd-mainw);}
+.page-item-show .pd__info-row{display:flex;align-items:center;gap:16px;margin:12px 0;}
+.page-item-show .pd__info-label{width:110px;font-weight:700;}
+.page-item-show .pd__info-body{display:flex;gap:10px;flex-wrap:wrap;}
+.page-item-show .pd__chip{
+  display:inline-flex;align-items:center;height:30px;line-height:30px;padding:0 14px;
+  border:1px solid var(--pd-chip);border-radius:15px;background:#fff;font-size:13px;
+}
+.page-item-show .pd__cond-text{display:inline-block;font-size:16px;line-height:30px;background:transparent;}
+
+/* ===== コメント ===== */
+.page-item-show .pd__comments{width:var(--pd-mainw);}
+.page-item-show .pd__comment{
+  width:var(--pd-mainw);
+  display:grid;
+  grid-template-columns:var(--pd-avatar) calc(var(--pd-mainw) - var(--pd-avatar) - var(--pd-gap));
+  grid-template-rows: var(--pd-avatar) auto;
+  column-gap:var(--pd-gap);
+  row-gap:20px;
+  margin-bottom:24px;
+}
+.page-item-show .pd__avatar{
+  grid-column:1/2;grid-row:1/2;width:var(--pd-avatar);height:var(--pd-avatar);border-radius:50%;background:#d9d9d9;
+}
+.page-item-show .pd__name{
+  grid-column:2/3;grid-row:1/2;display:flex;align-items:center;font-weight:700;font-size:16px;margin:0;
+}
+.page-item-show .pd__bubble{
+  grid-column:2/3;grid-row:2/3;width:100%;box-sizing:border-box;background:var(--pd-muted);
+  padding:10px 14px;border-radius:5px;font-size:14px;line-height:1.6;word-break:break-word;
+}
+
+/* ===== コメント投稿 ===== */
+.page-item-show .pd__form{width:var(--pd-mainw);max-width:var(--pd-mainw);}
+.page-item-show .pd__comment-label{display:block;font-size:18px;font-weight:700;margin:12px 0 8px;}
+.page-item-show .pd__textarea{
+  width:100%;min-height:160px;box-sizing:border-box;border:1px solid var(--pd-border);
+  border-radius:5px;padding:10px;font-size:14px;resize:vertical;
+}
+.page-item-show .pd__submit{
+  width:var(--pd-mainw);height:56px;margin-top:16px;border:0;border-radius:10px;background:var(--pd-accent);
+  color:#fff;font-weight:700;cursor:pointer;
+}
+
+/* コメント欄アバター */
+.pd__avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #d9d9d9;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* 画像がないときのグレー円プレースホルダ */
+.pd__avatar--placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+}
+
+.page-item-show .pd__image {
+  width: 100%;
+  max-width: 500px; /* PC時の上限 */
+  aspect-ratio: 1 / 1; /* 正方形で固定 */
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.page-item-show .pd__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width:768px){
+  .page-item-show .pd__grid{grid-template-columns:1fr;gap:24px;}
+  .page-item-show .pd__main,
+  .page-item-show .pd__block,
+  .page-item-show .pd__comments,
+  .page-item-show .pd__form,
+  .page-item-show .pd__textarea,
+  .page-item-show .pd__submit,
+  .page-item-show .pd__buybtn{width:100%;max-width:100%;}
+  .page-item-show .pd__title{font-size:28px;}
+  .page-item-show .pd__section-title{font-size:24px;}
+  .page-item-show .pd__info-label{width:96px;}
+  .page-item-show .pd__soldmark{font-size:clamp(46px, 14vw, 96px);}
+}

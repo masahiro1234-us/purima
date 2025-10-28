@@ -1,0 +1,78 @@
+/* 認証系ページの共通土台（薄い枠線は出さない） */
+:root{ --container-w: 1200px; }
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{ color:#000; background:#fff; font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; }
+
+.auth-page{ padding:48px 16px 80px; }
+
+.auth{
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding-top: 24px;
+}
+.auth__card{
+  max-width: 900px;
+  margin: 0 auto;
+}
+.auth__title{
+  text-align:center;
+  font-size:32px;
+  font-weight:700;
+  margin: 32px auto 24px;
+}
+.auth__error{
+  background:#fff2f2;
+  border:1px solid #ffb3b3;
+  border-radius:6px;
+  padding:12px 16px;
+  margin:0 auto 16px;
+  max-width:720px;
+}
+
+.auth__form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.auth__label{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-weight:600;
+}
+.auth__input{
+  height:58px;
+  border:1px solid #e5e5e5;     /* 薄い枠線「なし」の指定 → 透明にしたい場合は border-color:transparent; */
+  border-radius:4px;
+  padding:0 14px;
+  font-size:16px;
+  outline: none;
+}
+.auth__input:focus{
+  border-color:#bbb;
+}
+
+.auth__primary{
+  height:56px;
+  border:none;
+  border-radius:5px;
+  background:#ff6b6b;
+  color:#fff;
+  font-weight:700;
+  font-size:16px;
+  cursor:pointer;
+}
+.auth__link-row{
+  text-align:center;
+  margin-top:8px;
+}
+.auth__link{
+  color:#0073cc;
+  text-decoration:none;
+  font-size:14px;
+}
+.auth__link:hover{ text-decoration:underline; }

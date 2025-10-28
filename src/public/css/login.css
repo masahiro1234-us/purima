@@ -1,0 +1,75 @@
+/* ===== Login 専用（registerと同じ設計） ===== */
+:root{
+  --accent: #ff6b6b;
+  --border: #e5e5e5;
+  --link: #0073cc;
+}
+
+.auth{
+  padding: 56px 16px 80px;
+}
+
+.auth__card{
+  max-width: 1020px;
+  margin: 0 auto;
+  background: #fff;
+  border: none;        /* 薄い枠線なし */
+  box-shadow: none;
+  border-radius: 8px;
+  padding: 64px 80px;
+}
+
+.auth__title{
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.auth__error{
+  color: #c00;
+  margin-bottom: 16px;
+}
+
+.auth__form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth__label{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.auth__input{
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.auth__primary{
+  height: 56px;
+  border: none;
+  border-radius: 5px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.auth__link-row{
+  text-align: center;
+  margin-top: 12px;
+}
+
+.auth__link{
+  color: var(--link);
+  text-decoration: none;
+}

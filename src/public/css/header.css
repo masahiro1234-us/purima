@@ -1,0 +1,142 @@
+/* すべてのヘッダー内リンクは下線なし */
+.site-header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── 黒い上部バー ───────────────────────────── */
+.site-header__bar {
+  background: #000;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* 上段は画面いっぱいで左右40pxパディング（Figma: 左40px） */
+.site-header__bar .site-header__inner {
+  width: 100%;
+  margin: 0;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* ── ロゴ ───────────────────────────────────── */
+.site-header__logo img {
+  height: 36px; /* Figma: 36px */
+  display: block;
+}
+
+/* ── 検索 ───────────────────────────────────── */
+.site-header__search {
+  flex: 1;
+  margin: 0 24px;
+  display: flex;
+}
+.site-header__search input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+/* ── 右ナビ ─────────────────────────────────── */
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.site-header__nav a { text-decoration: none; }
+
+/* ログイン/マイページは白文字 */
+.site-header__nav a:not(.site-header__sell) {
+  color: #fff;
+}
+
+/* 出品ボタン（白地/黒枠/角丸4/黒文字） */
+.site-header__sell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  color: #000;        /* ←黒文字を明示 */
+  font-weight: 600;
+}
+
+/* ── タブ行（下の全幅ラインはFigmaの1本だけ） ───────────── */
+.site-header__tabs {
+  position: relative;
+  border-bottom: 2px solid #5F5F5F; /* Figma: #5F5F5F / 2px */
+}
+
+/* タブのコンテナは左寄せ。左オフセット129px、タブ間隔52px */
+.site-header__tabs .tabs {
+  width: var(--container-w);
+  height: 47px;                 /* Figma: 47px */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* ←左寄せ */
+  padding-left: 129px;          /* おすすめの左位置 */
+  gap: 52px;                    /* おすすめ↔マイリストの間隔（336-129-155 = 52） */
+}
+
+/* タブ文字（下線は出さない / アクティブのみ赤文字） */
+.site-header__tabs .tab {
+  position: relative;
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+  padding: 0 4px;   /* 下線は使わないのでボトム余白不要 */
+  border-bottom: none;
+}
+.site-header__tabs .tab.is-active { color: #e60012; }
+.site-header__tabs .tab.is-active::after { content: none; } /* 赤い短線も出さない */
+
+/* ヘッダー内リンク色の保険 */
+.site-header__link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ===== ログアウト（ボタンをリンク化）======================= */
+/* nav直下のフォームがフレックス子要素として並ぶように */
+.site-header__logout-form {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* <button> のデフォ背景/枠を消し、リンクと同じトーンに */
+.site-header__logout-form .site-header__link {
+  background: transparent;
+  border: none;
+  color: #fff;           /* ログイン/マイページと同じ白文字 */
+  font: inherit;         /* フォントを周囲に合わせる */
+  padding: 0;            /* a と高さを揃える（nav が高さを持っているのでOK） */
+  height: 40px;          /* 検索・出品と縦揃え */
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+}
+
+/* アクセシビリティ（キーボードフォーカス時） */
+.site-header__logout-form .site-header__link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* 軽いホバー */
+.site-header__logout-form .site-header__link:hover {
+  opacity: .85;
+}

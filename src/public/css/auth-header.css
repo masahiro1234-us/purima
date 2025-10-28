@@ -1,0 +1,20 @@
+/* 黒帯ヘッダー：Figma 1515×82 / ロゴ 370×36 左25px 上22px */
+.auth-header{
+  background:#000;
+  height:82px;
+  width:100%;
+}
+.auth-header__inner{
+  max-width:1200px;      /* 既存サイト幅に合わせる */
+  height:82px;
+  margin:0 auto;
+  position:relative;
+}
+.auth-header__logo{
+  height:36px;
+  width:auto;
+  position:absolute;
+  left:25px;
+  top:22px;
+  display:block;
+}
