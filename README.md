@@ -18,21 +18,21 @@ cd purima
 docker compose up -d --build
 ```
 
-2.コンテナに入る
+### 2.コンテナに入る
 ```bash
 docker compose exec php bash
 ```
 
-3.Laravel初期設定
+### 3.Laravel初期設定
 ```bash
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan storage:link
+```
 
-
-4.Stripeテストキー設定
+### 4.Stripeテストキー設定
 .envに以下を追加
 STRIPE_KEY=YOUR_PUBLIC_KEY
 STRIPE_SECRET=YOUR_SECRET_KEY
@@ -60,8 +60,8 @@ DB_PASSWORD=laravel_pass
 ```bash
 php artisan config:clear
 php artisan migrate:fresh --env=testing
-php artisan test --ent=testing
-
+php artisan test --env=testing
+```
 
 全てのテスト(10tests)がPASSすること確認ずみ
 
@@ -82,4 +82,4 @@ php artisan test --ent=testing
 ・決済＝Stripe API(テストモード)
 ・テスト＝PHPUnit/Laravel Feature Test
 ・画像処理＝PHP-GD
-・フロント＝Bladde +CSS（BEM準拠）
+・フロント＝Blade +CSS（BEM準拠）
