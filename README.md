@@ -34,8 +34,8 @@ php artisan storage:link
 
 4.Stripeテストキー設定
 .envに以下を追加
-STRIPE_PUBLIC_KEY=YOUR_PUBLIC_KEY
-STRIPE_SECRET_KEY=YOUR_SECRET_KEY
+STRIPE_KEY=YOUR_PUBLIC_KEY
+STRIPE_SECRET=YOUR_SECRET_KEY
 
 # 機能一覧
 ・ユーザー登録/ログイン＝Laravel標準の認証機能を利用
